@@ -1,0 +1,74 @@
+.circular-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.circular-timer-ring-container {
+  position: relative;
+  width: 180px; /* Increase the size of the ring (change to your desired size) */
+  height: 180px; /* Increase the size of the ring (change to your desired size) */
+}
+
+.circular-timer-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.circular-timer-ring-background {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 15; /* Adjust the width of the ring (change to your desired width) */
+  stroke-dasharray: 251.327412287; /* 2 * π * r (r = 40) */
+}
+
+.circular-timer-ring-progress {
+  fill: none;
+  stroke: #8a2be2; /* Violet color for the progress (hex code: #8a2be2) */
+  stroke-width: 15; /* Adjust the width of the ring (change to your desired width) */
+  stroke-linecap: round;
+  stroke-dasharray: 251.327412287; /* 2 * π * r (r = 40) */
+  stroke-dashoffset: 0; /* Will be updated by JavaScript */
+}
+
+.timer-text-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-text {
+  font-size: 18px; /* Increase the font size of the time text (change to your desired size) */
+  fill: #000;
+}
+
+.timer {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

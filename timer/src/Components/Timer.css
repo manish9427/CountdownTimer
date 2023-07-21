@@ -7,8 +7,8 @@
 
 .circular-timer-ring-container {
   position: relative;
-  width: 180px; /* Increase the size of the ring (change to your desired size) */
-  height: 180px; /* Increase the size of the ring (change to your desired size) */
+  width: 180px;
+  height: 180px;
 }
 
 .circular-timer-ring {
@@ -20,17 +20,17 @@
 .circular-timer-ring-background {
   fill: none;
   stroke: #ccc;
-  stroke-width: 15; /* Adjust the width of the ring (change to your desired width) */
-  stroke-dasharray: 251.327412287; /* 2 * π * r (r = 40) */
+  stroke-width: 15;
+  stroke-dasharray: 251.327412287;
 }
 
 .circular-timer-ring-progress {
   fill: none;
-  stroke: #8a2be2; /* Violet color for the progress (hex code: #8a2be2) */
-  stroke-width: 15; /* Adjust the width of the ring (change to your desired width) */
+  stroke: #8a2be2;
+  stroke-width: 15;
   stroke-linecap: round;
-  stroke-dasharray: 251.327412287; /* 2 * π * r (r = 40) */
-  stroke-dashoffset: 0; /* Will be updated by JavaScript */
+  stroke-dasharray: 251.327412287;
+  stroke-dashoffset: 0;
 }
 
 .timer-text-container {
@@ -45,7 +45,7 @@
 }
 
 .timer-text {
-  font-size: 18px; /* Increase the font size of the time text (change to your desired size) */
+  font-size: 18px;
   fill: #000;
 }
 

@@ -1,11 +1,10 @@
 import "./App.css";
-import Timer from "./Components/Timer";
+import CountdownTimer from "./Components/Timer";
 
 function App() {
   return (
     <div className="App">
-      <h1>Routine Starting in...</h1>
-      <Timer />
+      <CountdownTimer />
     </div>
   );
 }

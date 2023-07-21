@@ -1,70 +1,86 @@
 import React, { useState, useEffect } from "react";
-import "./Timer.css";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
 
-const Timer = () => {
-  const [seconds, setSeconds] = useState(60);
+const CountdownTimer = () => {
+  const initialCountdownTime = 60; // 10 minutes in seconds
+  const [countdownTime, setCountdownTime] = useState(initialCountdownTime);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((prevSeconds) => (prevSeconds > 0 ? prevSeconds - 1 : 0));
+    const intervalId = setInterval(() => {
+      setCountdownTime((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(intervalId); // Cleanup the interval when component unmounts
   }, []);
 
-  const formatTime = (timeInSeconds) => {
-    const minutes = Math.floor(timeInSeconds / 60);
-    const seconds = timeInSeconds % 60;
+  useEffect(() => {
+    if (countdownTime <= 0) {
+      // Perform any action when the countdown reaches 0
+    }
+  }, [countdownTime]);
 
-    return `${minutes.toString().padStart(2, "0")}:${seconds
-      .toString()
-      .padStart(2, "0")}`;
-  };
+  const minutes = Math.floor(countdownTime / 60);
+  const seconds = countdownTime % 60;
+
+  const formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+  const progress = (countdownTime / initialCountdownTime) * 100;
 
   const handleAddTenSeconds = () => {
-    setSeconds((prevSeconds) => prevSeconds + 10);
+    setCountdownTime((prevTime) => prevTime + 10);
   };
 
   const handleSkip = () => {
-    setSeconds(0);
-  };
-
-  const calculateCircleProgress = () => {
-    return ((60 - seconds) / 60) * 100;
+    setCountdownTime(0);
   };
 
   return (
-    <div className="circular-timer">
-      <div className="circular-timer-ring-container">
-        <svg className="circular-timer-ring" viewBox="0 0 100 100">
-          <circle
-            className="circular-timer-ring-background"
-            r="40"
-            cx="50"
-            cy="50"
-          />
-          <circle
-            className="circular-timer-ring-progress"
-            r="40"
-            cx="50"
-            cy="50"
-            style={{
-              strokeDashoffset: `calc(251.327412287 * (1 - ${calculateCircleProgress()} / 100))`,
-            }}
-          />
-        </svg>
-        <div className="timer-text-container">
-          <span className="timer-text">{formatTime(seconds)}</span>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <div style={{ width: "100px", height: "100px", position: "relative" }}>
+        <CircularProgress
+          variant="determinate"
+          value={progress}
+          color="primary"
+          size={100}
+          thickness={5}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          {formattedTime}
         </div>
       </div>
-      <div className="timer">
-        <div className="buttons">
-          <button onClick={handleAddTenSeconds}>+10 sec</button>
-          <button onClick={handleSkip}>Skip</button>
-        </div>
+      <div style={{ marginTop: "20px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleAddTenSeconds}
+        >
+          +10 Sec
+        </Button>
+        &nbsp;
+        <Button variant="contained" color="secondary" onClick={handleSkip}>
+          Skip
+        </Button>
       </div>
     </div>
   );
 };
 
-export default Timer;
+export default CountdownTimer;

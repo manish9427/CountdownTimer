@@ -7,8 +7,6 @@
 
 .circular-timer-ring-container {
   position: relative;
-  width: 180px;
-  height: 180px;
 }
 
 .circular-timer-ring {
@@ -47,6 +45,9 @@
 .timer-text {
   font-size: 18px;
   fill: #000;
+  /* transform: rotate(90deg); */
+  text-anchor: middle;
+  /* dominat-baseline: central; */
 }
 
 .timer {
